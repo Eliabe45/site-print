@@ -1,6 +1,6 @@
 {
   "name": "site-print",
-  "version": "1.0.0",
+  "version": "1.0.04",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "license": "MIT",

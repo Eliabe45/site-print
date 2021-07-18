@@ -9,6 +9,7 @@ interface PrintSiteParams {
     height: number;
   };
   fullPage?: boolean;
+  captureBeyondViewport?: boolean;
 }
 
 const defaultDefaultViewport = {
@@ -27,6 +28,7 @@ export async function printSite({
   path = defaultPath,
   defaultViewport = defaultDefaultViewport,
   fullPage = false,
+  captureBeyondViewport = false,
   mobile,
 }: PrintSiteParams): Promise<void> {
   const userAgent = mobile
@@ -42,7 +44,12 @@ export async function printSite({
   await page
     .waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 10000 })
     .catch(() => {});
-  await page.screenshot({ path: path, type: 'png', fullPage: true });
+  await page.screenshot({
+    path: path,
+    type: 'png',
+    fullPage,
+    captureBeyondViewport,
+  });
 
   await browser.close();
 }

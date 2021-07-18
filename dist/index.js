@@ -51,11 +51,11 @@ var defaultPath = './image.png';
  * @param path path to save the image to, should have .png extension
  */
 function printSite(_a) {
-    var url = _a.url, _b = _a.path, path = _b === void 0 ? defaultPath : _b, _c = _a.defaultViewport, defaultViewport = _c === void 0 ? defaultDefaultViewport : _c, _d = _a.fullPage, fullPage = _d === void 0 ? false : _d, mobile = _a.mobile;
+    var url = _a.url, _b = _a.path, path = _b === void 0 ? defaultPath : _b, _c = _a.defaultViewport, defaultViewport = _c === void 0 ? defaultDefaultViewport : _c, _d = _a.fullPage, fullPage = _d === void 0 ? false : _d, _e = _a.captureBeyondViewport, captureBeyondViewport = _e === void 0 ? false : _e, mobile = _a.mobile;
     return __awaiter(this, void 0, void 0, function () {
         var userAgent, browser, page;
-        return __generator(this, function (_e) {
-            switch (_e.label) {
+        return __generator(this, function (_f) {
+            switch (_f.label) {
                 case 0:
                     userAgent = mobile
                         ? 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1'
@@ -64,20 +64,30 @@ function printSite(_a) {
                             defaultViewport: defaultViewport,
                         })];
                 case 1:
-                    browser = _e.sent();
+                    browser = _f.sent();
                     return [4 /*yield*/, browser.newPage()];
                 case 2:
-                    page = _e.sent();
+                    page = _f.sent();
                     page.setUserAgent(userAgent);
                     return [4 /*yield*/, page.goto(url)];
                 case 3:
-                    _e.sent();
-                    return [4 /*yield*/, page.screenshot({ path: path, type: 'png', fullPage: true })];
+                    _f.sent();
+                    return [4 /*yield*/, page
+                            .waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 10000 })
+                            .catch(function () { })];
                 case 4:
-                    _e.sent();
-                    return [4 /*yield*/, browser.close()];
+                    _f.sent();
+                    return [4 /*yield*/, page.screenshot({
+                            path: path,
+                            type: 'png',
+                            fullPage: fullPage,
+                            captureBeyondViewport: captureBeyondViewport,
+                        })];
                 case 5:
-                    _e.sent();
+                    _f.sent();
+                    return [4 /*yield*/, browser.close()];
+                case 6:
+                    _f.sent();
                     return [2 /*return*/];
             }
         });
