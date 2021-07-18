@@ -39,6 +39,9 @@ export async function printSite({
   page.setUserAgent(userAgent);
 
   await page.goto(url);
+  await page
+    .waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 10000 })
+    .catch(() => {});
   await page.screenshot({ path: path, type: 'png', fullPage: true });
 
   await browser.close();
