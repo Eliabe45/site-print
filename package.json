@@ -1,6 +1,13 @@
 {
   "name": "site-print",
-  "version": "1.0.05",
+  "author": {
+    "name": "Eliabe França",
+    "email": "eliabe.fc@gmail.com",
+    "url": "https://github.com/eliabe45"
+  },
+  "homepage": "https://github.com/Eliabe45/site-print#readme",
+  "repository": "https://github.com/eliabe45/site-print",
+  "version": "1.0.06",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "license": "MIT",
