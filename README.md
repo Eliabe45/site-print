@@ -4,10 +4,20 @@
 
 ### Easily print any web page and save it to a .png image file
 
+### Installation
+```bash
+npm install site-print
+```
+or
+
+```bash
+yarn add site-print
+```
+
 ### Examples
 
 ```typescript
-import { printSite } from '.';
+import { printSite } from 'site-print';
 
 printSite({
   url: 'https://www.youtube.com',
