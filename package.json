@@ -7,7 +7,7 @@
   },
   "homepage": "https://github.com/Eliabe45/site-print#readme",
   "repository": "https://github.com/eliabe45/site-print",
-  "version": "1.0.06",
+  "version": "1.0.6",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "license": "MIT",
